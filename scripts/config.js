@@ -918,7 +918,7 @@ export function initConfig() {
                     this.items = this.items.filter((item) => !itemsToIgnore.includes(item));
                 }
                 if (this.showPreparedOnly) {
-                    const allowIfNotPrepared = ["atwill", "innate", "pact", "always"];
+                    const allowIfNotPrepared = ["atwill", "innate", "pact", "always", "powerCasting"];
                     this.items = this.items.filter((item) => {
                         if (allowIfNotPrepared.includes(item.system.preparation.mode)) return true;
                         if (item.system.level == 0) return true;
@@ -952,7 +952,7 @@ export function initConfig() {
                     },
                 ];
                 for (const [level, label] of Object.entries(spellLevels)) {
-                    const levelSpells = this.items.filter((item) => item.system.level == level && (item.system.preparation.mode === "prepared" || item.system.preparation.mode === "always"));
+                    const levelSpells = this.items.filter((item) => item.system.level == level && (item.system.preparation.mode === "prepared" || item.system.preparation.mode === "always" || item.system.preparation.mode === "powerCasting"));
                     if (!levelSpells.length || level == 0) continue;
                     spells.push({
                         label,
